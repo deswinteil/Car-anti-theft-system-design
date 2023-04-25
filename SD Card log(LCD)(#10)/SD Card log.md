@@ -22,7 +22,7 @@ VCLK信号的速率取决于LCDCON1寄存器中的CLKVAL字段，公式如程序
 
 
 
-![LCD控制器](C:\Users\qinyibo\AppData\Roaming\Typora\typora-user-images\image-20230426003318945.png)
+![LCD控制器](./1.png)
 
 REGBANK：寄存器组，由17个寄存器和一个256×16的调色板构成，用来设置LCD控制器。
 
@@ -68,7 +68,7 @@ S3C2440A为TFT LCD控制提供256色调色板。用户可以从这两种格式�
 
 ## 键盘部分
 
-![HD7279A与S3C2410A的连接原理图](C:\Users\qinyibo\AppData\Roaming\Typora\typora-user-images\image-20230426003709715.png)
+![HD7279A与S3C2410A的连接原理图](./2.png)
 
 HA7279A是一片具有串行接口并可同时驱动8位共阴式数码管或64只独立LED的智能显示驱动芯片。该芯片同时可连接多达64键的键盘矩阵，一片即可完成LED显示及键盘接口的全部功能。
 
