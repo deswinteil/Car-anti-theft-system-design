@@ -12,6 +12,7 @@ Completed in small groups, the division of labor within the group is as follows:
 * S3C2440's development board schematic: SD CARD.
 * S3C2440 development board schematic: Ethernet interface.
 * Read the date and time of RTC in S3C2440.
+* ~~Connect GSM/GPRS module SIM900A with S3C2440~~
 * Vibration sensor external request processing.
 * Access to the SD card log via LCD.
 * Complete the overall program framework.
