@@ -74,3 +74,4 @@ WTCNT     EQU  0x53000008       ;Eatch-dog timer count
 ;我自己加的
 INTOFFSET	EQU	0X4A000014
 	END
+	
