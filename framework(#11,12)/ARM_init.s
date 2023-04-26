@@ -49,8 +49,8 @@ C_Entry SETS "C_Interrupt"
 	B	.			;HandlerFIQ
 
 ResetHandler
-	B	$INIT_Clock	;初始化看门狗、时钟
-	B	$INIT_MemSetup	;初始化SDRAM
+	BL	$INIT_Clock	;初始化看门狗、时钟
+	BL	$INIT_MemSetup	;初始化SDRAM
 	BL	$INIT_Enternet	;初始化以太网
 	BL	$INIT_LCD_1			;初始化LCD
 	BL	$INIT_LCD_2
@@ -73,6 +73,10 @@ ResetHandler
 	
 	LDR	R0,=INTMSK
 	LDR	R1,=0xFFFFFFEE	;表示EINT0和EINT4-7可以中断
+	STR	R1,[R0]
+	
+	LDR	R0,=EINTMASK
+	LDR	R1,=0x000fff0f
 	STR	R1,[R0]
 	
 	LDR R0,=pEINT0	;EINT0在中断入口散转表中地址
@@ -159,4 +163,4 @@ pINT_ADC	DCD	0
 		UndtStackSpace	SPACE	0x100*4	;用户（系统）模式堆栈栈顶指针
 		UsrStackSpace
 		END 
-		
+

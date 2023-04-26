@@ -72,6 +72,9 @@ WTDAT     EQU  0x53000004       ;Watch-dog timer data
 WTCNT     EQU  0x53000008       ;Eatch-dog timer count
 
 ;我自己加的
-INTOFFSET	EQU	0X4A000014
+INTOFFSET	EQU	0x4a000014
+EINTMASK	EQU	0x560000a4
+INTMSK		EQU	0x4a000008
+
 	END
-	
+
