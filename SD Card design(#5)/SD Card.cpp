@@ -3,10 +3,6 @@
 #include "def.h"
 #include "option.h" 
 
-typedef uint32_t u32;///32位
-typedef uint16_t u16;///16位
-typedef uint8_t u8;///8位
-
 struct AlarmTime
 {
     int year;
@@ -20,7 +16,7 @@ struct AlarmTime
 
 u8 SD_Init(void) // 初始化SD卡
 {
-    u32 i;
+    U32 i;
     rGPECON |= 0xaaaaa800;    // 设置GPE5-10为SD卡功能
     rSDIPRE = PCLK / (SD_BAUD_RATE)-1;   //设置SD接口波特率为500kh
     rSDICON = (1 << 4) | 1;
@@ -36,7 +32,7 @@ u8 SD_Init(void) // 初始化SD卡
     return 1;
 }
 
-u8  SD_SendCommand(u8 cmd, u32 arg, u8 crc)  //向SD卡发送命令
+u8  SD_SendCommand(U8 cmd, U32 arg, U8 crc)  //向SD卡发送命令
 {
     unsigned char r1;
     unsigned int Retry = 0;
@@ -71,7 +67,7 @@ u8  SD_SendCommand(u8 cmd, u32 arg, u8 crc)  //向SD卡发送命令
     return r1;
 }
 
-u8  SPI_ReadWriteByte(u8 TxData) // SPI模式读取单字节的数据
+u8  SPI_ReadWriteByte(U8 TxData) // SPI模式读取单字节的数据
 {
     while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
     SPI_I2S_SendData(SPI1, TxData);
@@ -79,7 +75,7 @@ u8  SPI_ReadWriteByte(u8 TxData) // SPI模式读取单字节的数据
     return SPI_I2S_ReceiveData(SPI1);
 }
 
-u8 SD_ReceiveData(u8* data, u16 len, u8 release) //SD卡读取指定长度的数据
+u8 SD_ReceiveData(U8* data, U16 len, U8 release) //SD卡读取指定长度的数据
 {
     u16 retry;
     u8 r1;
@@ -116,7 +112,7 @@ u8 SD_ReceiveData(u8* data, u16 len, u8 release) //SD卡读取指定长度的数据
     return 0;
 }
 
-u8 SD_GetCID(u8* cid_data)
+u8 SD_GetCID(U8* cid_data)
 {
     u8 r1;
     //发CMD10命令，读取CID信息
@@ -128,7 +124,7 @@ u8 SD_GetCID(u8* cid_data)
     return 0;
 }
 
-u8 SD_WriteSingleBlock(u32 sector, const u8* data)
+u8 SD_WriteSingleBlock(U32 sector, const U8* data)
 {
     u8 r1;
     u16 i;
