@@ -1,7 +1,7 @@
 #include "RTC_readtime.h"
 #include "2440Reg_addr.h"
 #include "def.h"
-unsigned char tmp_rtc[6]={0}
+unsigned char tmp_rtc[7]={0}
 unsigned char rtc_data_tmp[14]={0}
 void init_rtc(void) {
     /* 1. 设置RTC时钟源为低速外部时钟 */
