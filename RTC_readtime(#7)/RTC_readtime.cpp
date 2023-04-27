@@ -4,13 +4,7 @@
 unsigned char tmp_rtc[7]={0}
 unsigned char rtc_data_tmp[14]={0}
 void init_rtc(void) {
-    /* 1. 设置RTC时钟源为低速外部时钟 */
-    rtccon |= (1 << 0);
-    rtccon &= ~(1 << 1);
-    /* 2. 设置RTC分频器为32768 */
-    rtccon |= (0x1 << 5);
-    /* 3. 设置RTC控制寄存器，使能RTC模块 */
-    rtccon |= (1 << 3);
+    rRTCCON = 0x1;
 }
 void set_rtc()  
 {  
