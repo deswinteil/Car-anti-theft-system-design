@@ -51,7 +51,7 @@ u32 nor_erase_block(u32 targetAddress)
         bSR7 = ReadStatus & (1 << 7);
     }
     nor_write_cmd(targetAddress, 0x0070);
-    ReadStatus = _RD(targetAddress);
+    ReadStatus = nor_read(targetAddress);
     bSR5 = ReadStatus & (1 << 5); // determine the 5th bit of the status register
     if (bSR5 == 0)
     {
@@ -76,16 +76,16 @@ u32 nor_write(u32 realAddr, u16 data)
     nor_write_cmd(realAddr, 0x0040);
     nor_write_cmd(realAddr, data);
     nor_write_cmd(realAddr, 0x0070);
-    ReadStatus = _RD(realAddr);
+    ReadStatus = nor_read(realAddr);
     bSR7 = ReadStatus & (1 << 7);
     while (!bSR7) // determine the 7th bit of the status register
     {
         nor_write_cmd(realAddr, 0x0070);
-        ReadStatus = _RD(realAddr);
+        ReadStatus = nor_read(realAddr);
         bSR7 = ReadStatus & (1 << 7);
     }
     nor_write_cmd(realAddr, 0x0070);
-    ReadStatus = _RD(realAddr);
+    ReadStatus = nor_read(realAddr);
     bSR4 = ReadStatus & (1 << 4); // determine the 4th bit of the status register
     if (bSR4 == 0)
     {
